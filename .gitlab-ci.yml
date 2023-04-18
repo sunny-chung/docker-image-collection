@@ -10,7 +10,9 @@ stages:
   script:
     - mkdir -p /kaniko/.docker
 #    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context "$CI_PROJECT_DIR/$CONTEXT_DIR" --skip-tls-verify --dockerfile $CI_PROJECT_DIR/$CONTEXT_DIR/Dockerfile --destination $REGISTRY_HOST/$DOCKER_IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+    - /kaniko/executor --context "$CI_PROJECT_DIR/$CONTEXT_DIR" --skip-tls-verify --dockerfile $CI_PROJECT_DIR/$CONTEXT_DIR/Dockerfile
+      --destination $REGISTRY_HOST/$DOCKER_IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+      --destination $REGISTRY_HOST/$DOCKER_IMAGE_NAME:latest
 
 build-and-push-image:sshd-with-docker-cli:
   extends: .build-and-push-image
