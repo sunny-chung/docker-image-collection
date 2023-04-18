@@ -17,3 +17,9 @@ build-and-push-image:sshd-with-docker-cli:
   variables:
     CONTEXT_DIR: sshd-with-docker-cli
     DOCKER_IMAGE_NAME: sshd-with-docker-cli
+
+build-and-push-image:ssh-client:
+  extends: .build-and-push-image
+  variables:
+    CONTEXT_DIR: ssh-client
+    DOCKER_IMAGE_NAME: ssh-client
