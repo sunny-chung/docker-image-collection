@@ -3,4 +3,4 @@ set -e
 
 IMAGE_NAME=host.docker.internal:30001/logspout-logstash
 
-docker build -t "$IMAGE_NAME" .
+docker buildx build --platform linux/amd64 -t "$IMAGE_NAME" --push .
